@@ -1,4 +1,4 @@
-package main
+package rapyd
 
 import (
 	"crypto/hmac"
@@ -107,7 +107,7 @@ func (s *signer) signData(data SignatureData) []byte {
 	return h.Sum(nil)
 }
 
-func (c *client) Sign(path string) ([]byte, error) {
+func (c *RapydClient) Sign(path string) ([]byte, error) {
 	req, err := http.NewRequest("GET", c.Resolve(path), nil)
 	if err != nil {
 		return nil, errors.New("unable to form a new request")

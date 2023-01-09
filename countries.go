@@ -1,29 +1,21 @@
-package main
+package rapyd
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
+
+	"github.com/rAlexander89/rapyd-banking/countries"
 )
 
-const (
-	getCountries = "v1/data/countries"
-)
-
-type Data interface{}
-
-type CountriesResponse struct {
-	Data Data `json:"data"`
-}
-
-func (c *client) GetCountries() (*CountriesResponse, error) {
-	res, err := c.Sign(getCountries)
+func (c *RapydClient) GetCountries() (*countries.GetCountriesResponse, error) {
+	res, err := c.Sign(countries.Index)
 	if err != nil {
 		return nil, errors.New("error getting countries")
 	}
 
-	var body CountriesResponse
+	var body countries.GetCountriesResponse
 
 	err = json.Unmarshal(res, &body)
 

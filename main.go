@@ -1,29 +1,31 @@
-package main
+package rapyd
 
-import (
-	"fmt"
-	"log"
-	"net/http"
-	"net/url"
-	"os"
+// "fmt"
+// "log"
+// "net/http"
+// "net/url"
+// "os"
 
-	"github.com/joho/godotenv"
+// "github.com/joho/godotenv"
+
+const (
+	rapydSandbox = "https://sandboxapi.rapyd.net"
 )
 
-func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("error loading env file")
-	}
+// func main() {
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		log.Fatal("error loading env file")
+// 	}
 
-	sk := os.Getenv("SECRET_KEY")
-	ak := os.Getenv("ACCESS_KEY")
+// 	sk := os.Getenv("SECRET_KEY")
+// 	ak := os.Getenv("ACCESS_KEY")
 
-	cli := http.DefaultClient
-	url, _ := url.Parse("https://sandboxapi.rapyd.net")
-	signer := NewSigner([]byte(ak), []byte(sk))
-	client := NewClient(signer, cli, url)
-	response, _ := client.GetCountries()
+// 	cli := http.DefaultClient
+// 	url, _ := url.Parse(rapydSandbox)
+// 	signer := NewSigner([]byte(ak), []byte(sk))
+// 	client := NewClient(signer, cli, url)
+// 	response, _ := client.GetCountries()
 
-	fmt.Println("final response: ", response)
-}
+// 	fmt.Println("final response: ", response)
+// }
