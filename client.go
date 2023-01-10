@@ -33,6 +33,7 @@ func (c *RapydClient) Resolve(path string) string {
 	if err != nil {
 		panic(errors.New("error parsing path"))
 	}
-	// url == "https://sanboxapi.rapid.net"
+	// currently using sandbox url:
+	// "https://sanboxapi.rapid.net"
 	return c.url.ResolveReference(endpoint).String()
 }
